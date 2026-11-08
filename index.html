@@ -6,6 +6,10 @@
 <title>Katie Ritter — Film Editor</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<style>
+/* Prevent flash of other tab content before main CSS loads */
+.pre-hide { display: none !important; }
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -1319,7 +1323,7 @@ textarea.form-control {
   </section>
 
   <!-- MY WORK VIEW -->
-  <section class="tab-view page-container work-page" id="tab-mywork" style="display:none">
+  <section class="tab-view page-container work-page pre-hide" id="tab-mywork" style="display:none">
     <div class="content-section">
       <h2 class="section-title">My Work</h2>
 
@@ -1533,11 +1537,11 @@ textarea.form-control {
   </section>
 
   <!-- ABOUT VIEW -->
-  <section class="tab-view page-container" id="tab-about" style="display:none">
+  <section class="tab-view page-container pre-hide" id="tab-about" style="display:none">
     <div class="content-section">
       <div class="about-row">
         <div class="about-photo-frame">
-          <img src="about-photo.jpg" alt="Katie Ritter - Film Editor">
+          <img src="about-photo.jpg" alt="Katie Ritter - Film Editor" loading="lazy">
         </div>
         <div class="about-bio">
           <h3>Hi, I&rsquo;m Katie</h3>
@@ -1620,7 +1624,7 @@ textarea.form-control {
   </section>
 
   <!-- CONTACT VIEW -->
-  <section class="tab-view page-container" id="tab-contact" style="display:none">
+  <section class="tab-view page-container pre-hide" id="tab-contact" style="display:none">
     <div class="content-section">
       <h2 class="section-title">Let&rsquo;s talk!</h2>
       <div class="contact-layout">
@@ -1873,7 +1877,7 @@ textarea.form-control {
 
   function setTab(tabName) {
     tabViews.forEach(v => {
-      v.classList.remove('no-animate');
+      v.classList.remove('no-animate', 'pre-hide');
       v.style.removeProperty('display');
       const isActive = v.id === `tab-${tabName}`;
       v.classList.toggle('active', isActive);
