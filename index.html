@@ -1712,13 +1712,17 @@ textarea.form-control {
 </div>
 
 <script>
-  // Some browsers block autoplay until the video is muted + explicitly played
+  // Autoplay hero video — muted is required by browsers
   const heroVideo = document.querySelector('.video-container video');
   if (heroVideo) {
     heroVideo.muted = true;
+    heroVideo.setAttribute('muted', '');
     const tryPlay = () => heroVideo.play().catch(() => {});
     tryPlay();
+    heroVideo.addEventListener('canplay', tryPlay, { once: true });
+    heroVideo.addEventListener('loadeddata', tryPlay, { once: true });
     document.addEventListener('click', tryPlay, { once: true });
+    document.addEventListener('touchstart', tryPlay, { once: true });
   }
 
   // --- Project cards: embed opens a lightbox, link opens a new tab ---
